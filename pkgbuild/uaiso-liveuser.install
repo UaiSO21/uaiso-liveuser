@@ -1,0 +1,35 @@
+## arg 1:  the new package version
+#pre_install() {
+	# do something here
+#}
+
+## arg 1:  the new package version
+post_install() {
+    sed -i 's/#autologin-user=.*/autologin-user=liveuser/' /etc/lightdm/lightdm.conf
+	sed -i 's/#autologin-user-timeout=.*/autologin-user-timeout=0/' /etc/lightdm/lightdm.conf
+	sed -i 's/#autologin-in-background=.*/autologin-in-background=false/' /etc/lightdm/lightdm.conf
+	sed -i 's/#autologin-session=.*/autologin-session=lxqt/' /etc/lightdm/lightdm.conf
+
+	systemctl enable lightdm.service
+}
+
+## arg 2:  the old package version
+#pre_upgrade() {
+	# do something here
+#}
+
+## arg 2:  the old package version
+#post_upgrade() {
+	# do something here
+#}
+
+## arg 1:  the old package version
+#pre_remove() {
+	# do something here
+#}
+
+## arg 1:  the old package version
+#post_remove() {
+	# do something here
+#}
+ 
